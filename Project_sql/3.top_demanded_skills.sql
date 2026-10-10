@@ -11,7 +11,7 @@ WITH Job_count_Data_Analyst As(
     SELECT  
             sd.skill_id,
             sd.skills,
-            count(jpf.job_id) as Job_count_Data_Analyst
+            count(jpf.job_id) as Jobs_Data_Analyst
     FROM
             job_postings_fact jpf
     INNER JOIN   skills_job_dim sjd ON sjd.job_id = jpf.job_id
@@ -28,7 +28,7 @@ Job_Count_Data_Analyst_Remote AS (
 SELECT  
             sd.skill_id,
             sd.skills,
-            count(jpf.job_id) as Job_count_DA_Remote
+            count(jpf.job_id) as Jobs_Data_Analyst_Remote
     FROM
             job_postings_fact jpf
     INNER JOIN   skills_job_dim sjd ON sjd.job_id = jpf.job_id
@@ -43,10 +43,10 @@ SELECT
 
 SELECT
         da.skills,
-        da.Job_count_Data_Analyst,
-        dar.Job_count_DA_Remote
+        da.Jobs_Data_Analyst,
+        dar.Jobs_Data_Analyst_Remote
 FROM    Job_count_Data_Analyst da
 LEFT JOIN   Job_Count_Data_Analyst_Remote dar on dar.skill_id = da.skill_id 
-ORDER BY  Job_count_Data_Analyst DESC
+ORDER BY  Jobs_Data_Analyst DESC
 LIMIT 5;
 

@@ -7,7 +7,7 @@ identify the most financially rewarding skills to acquire and improve.*/
 
 SELECT
     sd.skills,
-    ROUND(avg(jpf.salary_year_avg),2) as Avg_salary
+    ROUND(avg(jpf.salary_year_avg),0) as Avg_salary
 FROM    
     job_postings_fact jpf
 INNER Join     skills_job_dim  sjd  ON sjd.job_id = jpf.job_id
